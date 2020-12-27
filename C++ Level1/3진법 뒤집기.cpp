@@ -1,7 +1,4 @@
 #include <string>
-#include <vector>
-#include<algorithm>
-#include<iostream>
 #include<math.h>
 using namespace std;
 int solution(int n) {
@@ -23,10 +20,4 @@ int solution(int n) {
 		answer += (tmp[i] - 48) * val;
 	}
 	return answer;
-}
-
-int main(void)
-{
-	solution(125);
-	return 0;
 }
