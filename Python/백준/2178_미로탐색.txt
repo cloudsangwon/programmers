@@ -1,0 +1,28 @@
+dx=[-1,0,1,0]
+dy=[0,1,0,-1]
+N,M= map(int,input().split())
+
+Matrix = []
+for i in range(N):
+  Matrix.append(list(input()))
+
+visit = [ [0]*M for _ in range(N) ]
+
+queue = [[0,0]]
+visit[0][0] = 1
+
+while queue:
+  x , y = queue.pop(0)
+  
+  if x==N-1 and y==M-1:
+    print(visit[x][y])
+    break
+  
+  for i in range(4):
+    xx = x+dx[i]
+    yy = y+dy[i]
+    if 0<=xx<N and 0<=yy<M:
+      if visit[xx][yy]==0 and Matrix[xx][yy]=="1":
+        visit[xx][yy] = visit[x][y]+1
+        queue.append([xx,yy])
+    

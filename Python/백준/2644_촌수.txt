@@ -1,0 +1,33 @@
+N = int(input())
+a, b =map(int,input().split())
+M = int(input())
+
+Matrix = [ [] for i in range(N+1)]
+Res=[0]*(N+1)
+
+for i in range(M):
+  x,y = map(int,input().split())
+  Matrix[x].append(y)
+  Matrix[y].append(x)
+
+def BFS(start,end):
+  queue=[start]
+  visit = []
+  
+  while queue:
+    V =queue.pop(0)
+    visit.append(V)
+
+    if V==end:
+      break
+    for i in Matrix[V]:
+      if i not in visit:
+        queue.append(i)
+        Res[i] = Res[V]+1
+  if Res[end]==0:
+    print(-1)
+  else:
+    print(Res[end])
+
+BFS(a,b)
+
